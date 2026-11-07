@@ -24,7 +24,12 @@ import tkinter as tk
 from pathlib import Path
 from tkinter import filedialog, messagebox, scrolledtext, ttk
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+if getattr(sys, "frozen", False):
+    # PyInstaller: модули уже встроены в exe
+    BASE_DIR = Path(getattr(sys, "_MEIPASS", Path(sys.executable).parent))
+else:
+    BASE_DIR = Path(__file__).resolve().parent
+    sys.path.insert(0, str(BASE_DIR))
 
 from fmsgs import FmsgFile  # noqa: E402
 from rules import EDIT_LABELS, apply_edit  # noqa: E402

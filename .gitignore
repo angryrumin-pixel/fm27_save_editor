@@ -1,1 +1,10 @@
-*.zip
+.venv/
+venv/
+env/
+build/
+dist/
+*.spec
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
